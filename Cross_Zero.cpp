@@ -47,6 +47,21 @@ void ClearScr()
 {
     system("cls");
 }
+void WellDone(Field& f)
+{
+    if (f.progress == WON_PLAYER)
+    {
+        cout << " Player won! Well done!" << endl;
+    }
+    else if (f.progress == WON_COMP)
+    {
+        cout << " Computer won!" << endl;
+    }
+    else if (f.progress == DRAW)
+    {
+        cout << " Draw!" << endl;
+    }
+}
 
 void InitGame(Field& f)
 {
@@ -362,22 +377,8 @@ int main()
     } while (f.progress == IN_GAME);
 
     cout << endl;
-
-    if (f.progress==WON_PLAYER)
-    {
-        cout << " Player won! Well done!" << endl;
-    }
-    else if (f.progress==WON_COMP)
-    {
-        cout << " Computer won!" << endl;
-    }
-    else if (f.progress==DRAW)
-    {
-        cout << " Draw!" << endl;
-    }
-
    
-
+    WellDone(f);
     DeInitGame(f);
     return 0;
 }
