@@ -150,6 +150,26 @@ Coord GetPlayerCoord( Field & f)
 
 Progress IsWon(const Field& f)
 {
+    bool draw = true;
+    for (size_t y = 0; y < f.size; y++)
+    {
+        for (size_t x = 0; x < f.size; x++)
+        {
+            if (f.ppField[y][x] == EMPTY)
+            {
+                draw = false;
+                    break;
+           }
+        }
+        if (!draw)
+        {
+            break;
+        }
+    }
+    if (draw)
+    {
+        return DRAW;
+    }
     for (size_t y = 0; y < f.size; y++)
     {
         if (f.ppField[y][0]==f.ppField[y][1] && f.ppField[y][0]==f.ppField[y][2])
@@ -207,26 +227,7 @@ Progress IsWon(const Field& f)
             return WON_COMP;
         }
     }
-    bool draw = true;
-    for (size_t y = 0; y < f.size; y++)
-    {
-        for (size_t x = 0; x < f.size; x++)
-        {
-            if (f.ppField[y][x] == EMPTY)
-            {
-                draw = false;
-                    break;
-           }
-        }
-        if (!draw)
-        {
-            break;
-        }
-    }
-    if (draw)
-    {
-        return DRAW;
-    }
+    
 
     return IN_GAME;
 }
@@ -286,17 +287,17 @@ Coord GetCompCoord(Field& f)
         buf[num] = { 0,0 };
         num++;
     }
-    if (f.ppField[0][0] == EMPTY)
+    if (f.ppField[2][2] == EMPTY)
     {
         buf[num] = { 2,2 };
         num++;
     }
-    if (f.ppField[0][0] == EMPTY)
+    if (f.ppField[2][0] == EMPTY)
     {
         buf[num] = { 2,0 };
         num++;
     }
-    if (f.ppField[0][0] == EMPTY)
+    if (f.ppField[0][2] == EMPTY)
     {
         buf[num] = { 0,2 };
         num++;
