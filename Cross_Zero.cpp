@@ -286,17 +286,17 @@ Coord GetCompCoord(Field& f)
         buf[num] = { 0,0 };
         num++;
     }
-    if (f.ppField[0][0] == EMPTY)
+    if (f.ppField[2][2] == EMPTY)
     {
         buf[num] = { 2,2 };
         num++;
     }
-    if (f.ppField[0][0] == EMPTY)
+    if (f.ppField[2][0] == EMPTY)
     {
         buf[num] = { 2,0 };
         num++;
     }
-    if (f.ppField[0][0] == EMPTY)
+    if (f.ppField[0][2] == EMPTY)
     {
         buf[num] = { 0,2 };
         num++;
